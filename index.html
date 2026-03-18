@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>Guitar Tuner</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #1a1a2e;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 16px;
+      overflow-x: hidden;
+    }
+
+    .tuner-container {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      /* Maintain aspect ratio: 360 x 520 = ~1:1.444 */
+      aspect-ratio: 360 / 520;
+    }
+
+    .tuner-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      border-radius: 4px;
+    }
+
+    /* ── Mobile phones (portrait, up to 430px wide) ── */
+    @media screen and (max-width: 430px) {
+      body {
+        padding: 8px;
+        align-items: flex-start;
+      }
+      .tuner-container {
+        max-width: 100%;
+      }
+    }
+
+    /* ── iPad mini / iPad Air portrait (768px) ── */
+    @media screen and (min-width: 431px) and (max-width: 834px) {
+      body {
+        padding: 24px;
+        align-items: center;
+        min-height: 100%;
+      }
+      .tuner-container {
+        max-width: 400px;
+      }
+    }
+
+    /* ── iPad Pro 11" portrait (834px) / iPad Pro 12.9" (1024px) ── */
+    @media screen and (min-width: 835px) and (max-width: 1366px) {
+      body {
+        padding: 32px;
+        align-items: center;
+        min-height: 100%;
+      }
+      .tuner-container {
+        max-width: 420px;
+      }
+    }
+
+    /* ── iPad landscape: fill more of the screen height ── */
+    @media screen and (orientation: landscape) and (max-height: 600px) {
+      body {
+        padding: 8px;
+        align-items: flex-start;
+      }
+      .tuner-container {
+        /* In landscape, constrain by height instead */
+        max-width: none;
+        width: auto;
+        height: calc(100vh - 16px);
+        aspect-ratio: 360 / 520;
+      }
+    }
+
+    /* ── iPad Pro 12.9" landscape (1366 x 1024) ── */
+    @media screen and (min-width: 1024px) and (orientation: landscape) {
+      body {
+        align-items: center;
+        min-height: 100vh;
+      }
+      .tuner-container {
+        height: calc(100vh - 64px);
+        width: auto;
+        max-width: none;
+        aspect-ratio: 360 / 520;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tuner-container">
+    <iframe
+      src="https://guitarapp.com/tuner.html?embed=true"
+      allow="microphone"
+      title="GuitarApp Online Tuner"
+      loading="lazy"
+    ></iframe>
+  </div>
+</body>
+</html>
